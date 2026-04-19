@@ -36,6 +36,7 @@ scene.add(pointLight, ambientLight);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.maxDistance = 60;
 controls.minDistance = 10;
+controls.enableDamping = true;
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
