@@ -18,7 +18,7 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
+camera.position.set(0, 0, 30);
 
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
 const sandTexture = loader.load('sand.jpg');
@@ -37,12 +37,14 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.maxDistance = 60;
 controls.minDistance = 10;
 controls.enableDamping = true;
+controls.enablePan = false;
+controls.enableZoom = false;
 
 function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+  const starGeometry = new THREE.SphereGeometry(0.25, 24, 24);
   const starTexture = loader.load('lightning.png');
-  const material = new THREE.MeshStandardMaterial({ map: starTexture });
-  const star = new THREE.Mesh(geometry, material);
+  const starMaterial = new THREE.MeshStandardMaterial({ map: starTexture });
+  const star = new THREE.Mesh(starGeometry, starMaterial);
 
   const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
   star.position.set(x, y, z);
@@ -70,15 +72,6 @@ scene.add(moon);
 
 moon.position.z = 30;
 moon.position.setX(-10);
-
-function moveCamera() {
-  const t = document.body.getBoundingClientRect().top;
-  camera.position.x = t * 0.01;
-  camera.position.y = t * 0.002;
-  camera.position.z = t * 0.002;
-}
-
-document.body.onscroll = moveCamera;
 
 function animate() {
   requestAnimationFrame(animate);
