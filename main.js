@@ -22,18 +22,21 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.set(0, 0, 30);
 
+// torus
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
 const sandTexture = loader.load('sand.jpg');
 const material = new THREE.MeshStandardMaterial({ map: sandTexture });
 const torus = new THREE.Mesh(geometry, material);
 scene.add(torus);
 
+// lighting
 const pointLight = new THREE.PointLight(0xffffff, 1.5);
 pointLight.position.set(5, 5, 5);
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(pointLight, ambientLight);
 
+// controls
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.enableZoom = false;
@@ -46,8 +49,11 @@ controls.mouseButtons = {
 
 if (isTouchDevice) {
   controls.enabled = false;
+} else {
+  controls.enabled = true;
 }
 
+// stars
 function addStar() {
   const starGeometry = new THREE.SphereGeometry(0.25, 24, 24);
   const starTexture = loader.load('lightning.png');
@@ -64,9 +70,11 @@ function addStar() {
 
 Array(200).fill().forEach(addStar);
 
+// background
 const grassTexture = loader.load('grass.jpeg');
 scene.background = grassTexture;
 
+// cube
 const meTexture = loader.load('me.jpg');
 const me = new THREE.Mesh(
   new THREE.BoxGeometry(5, 5, 5),
@@ -74,6 +82,7 @@ const me = new THREE.Mesh(
 );
 scene.add(me);
 
+// moon
 const moonTexture = loader.load('moon.png');
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
@@ -84,6 +93,7 @@ scene.add(moon);
 moon.position.z = 30;
 moon.position.setX(-10);
 
+// animation
 function animate() {
   requestAnimationFrame(animate);
 
@@ -103,6 +113,7 @@ function animate() {
 
 animate();
 
+// resize
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
