@@ -22,6 +22,7 @@
         position: fixed;
         inset: 0;
         z-index: 0;
+        touch-action: pan-y;
       }
 
       main {
@@ -35,13 +36,16 @@
       header {
         text-align: center;
         margin-bottom: 20px;
-        pointer-events: none;
       }
 
-      h1,
-      h2,
-      p {
-        margin-top: 0;
+      a,
+      video,
+      button {
+        pointer-events: auto;
+      }
+
+      a {
+        color: lightblue;
       }
 
       .box {
@@ -51,12 +55,6 @@
         padding: 20px;
         border-radius: 12px;
         background: rgba(0, 0, 0, 0.6);
-        pointer-events: none;
-      }
-
-      a,
-      video,
-      button {
         pointer-events: auto;
       }
 
@@ -67,10 +65,6 @@
         margin: 30px auto 0;
         border: 3px solid white;
         border-radius: 12px;
-      }
-
-      a {
-        color: lightblue;
       }
     </style>
   </head>
@@ -101,8 +95,8 @@
           <p>- When the user presses the button presented, a “thank you” message appears, and the app says “thank you so much.”</p>
           <p>- Lastly, I used a power bank to power both devices via their respective power cables</p>
 
-          <p><a href="https://youtu.be/1n_KjpMfVT0?si=KYvkj5bqTcSr3D-r" target="_blank" rel="noopener noreferrer">* Arduino tutorial</a></p>
-          <p><a href="https://youtu.be/gpQDZ5CNY5w?si=bIQDUWydfEzQRCEX" target="_blank" rel="noopener noreferrer">* Python tutorial</a></p>
+          <p><a href="https://youtu.be/1n_KjpMfVT0?si=KYvkj5bqTcSr3D-r" target="_blank">* Arduino tutorial</a></p>
+          <p><a href="https://youtu.be/gpQDZ5CNY5w?si=bIQDUWydfEzQRCEX" target="_blank">* Python tutorial</a></p>
 
           <p>* Self-made the Linux executable</p>
           <p>* Overall time to complete: Around 4 months</p>
