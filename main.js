@@ -4,6 +4,8 @@ import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/cont
 const loader = new THREE.TextureLoader();
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
+const canvas = document.querySelector('#bg');
+
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(
@@ -14,13 +16,18 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector('#bg'),
+  canvas,
   antialias: true,
 });
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.set(0, 0, 30);
+
+// key behavior switch:
+// desktop -> canvas can receive mouse input
+// mobile  -> canvas ignores touch so page scrolls normally
+canvas.style.pointerEvents = isTouchDevice ? 'none' : 'auto';
 
 // torus
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
@@ -41,17 +48,14 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.enableZoom = false;
 controls.enablePan = false;
+
 controls.mouseButtons = {
   LEFT: THREE.MOUSE.ROTATE,
   MIDDLE: null,
   RIGHT: null
 };
 
-if (isTouchDevice) {
-  controls.enabled = false;
-} else {
-  controls.enabled = true;
-}
+controls.enabled = !isTouchDevice;
 
 // stars
 function addStar() {
@@ -107,7 +111,10 @@ function animate() {
   moon.rotation.y += 0.005;
   moon.rotation.z += 0.005;
 
-  controls.update();
+  if (!isTouchDevice) {
+    controls.update();
+  }
+
   renderer.render(scene, camera);
 }
 
