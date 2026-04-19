@@ -18,10 +18,9 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-
 camera.position.set(0, 0, 30);
 
-// 🌐 TORUS
+// torus
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
 const sandTexture = loader.load('sand.jpg');
 const material = new THREE.MeshStandardMaterial({ map: sandTexture });
@@ -29,37 +28,36 @@ const material = new THREE.MeshStandardMaterial({ map: sandTexture });
 const torus = new THREE.Mesh(geometry, material);
 scene.add(torus);
 
-// 💡 LIGHTING
+// lighting
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(5, 5, 5);
 
 const ambientLight = new THREE.AmbientLight(0xffffff);
-
 scene.add(pointLight, ambientLight);
 
-// 🎮 CONTROLS (LEFT CLICK ONLY)
+// controls
 const controls = new OrbitControls(camera, renderer.domElement);
-
 controls.enableDamping = true;
-
-// disable everything except rotate
 controls.enableZoom = false;
 controls.enablePan = false;
 
-// 🔥 ONLY LEFT CLICK WORKS
 controls.mouseButtons = {
   LEFT: THREE.MOUSE.ROTATE,
   MIDDLE: null,
   RIGHT: null
 };
 
-// ⭐ STARS
-function addStar() {
-  const starGeo = new THREE.SphereGeometry(0.25, 24, 24);
-  const starTexture = loader.load('lightning.png');
-  const starMat = new THREE.MeshStandardMaterial({ map: starTexture });
+// disable camera dragging on phones/tablets
+if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+  controls.enabled = false;
+}
 
-  const star = new THREE.Mesh(starGeo, starMat);
+// stars
+function addStar() {
+  const starGeometry = new THREE.SphereGeometry(0.25, 24, 24);
+  const starTexture = loader.load('lightning.png');
+  const starMaterial = new THREE.MeshStandardMaterial({ map: starTexture });
+  const star = new THREE.Mesh(starGeometry, starMaterial);
 
   const [x, y, z] = Array(3).fill().map(() =>
     THREE.MathUtils.randFloatSpread(100)
@@ -71,32 +69,30 @@ function addStar() {
 
 Array(200).fill().forEach(addStar);
 
-// 🌄 BACKGROUND
+// background
 const grassTexture = loader.load('grass.jpeg');
 scene.background = grassTexture;
 
-// 🧊 YOU CUBE
+// cube
 const meTexture = loader.load('me.jpg');
 const me = new THREE.Mesh(
   new THREE.BoxGeometry(5, 5, 5),
   new THREE.MeshBasicMaterial({ map: meTexture })
 );
-
 scene.add(me);
 
-// 🌙 MOON
+// moon
 const moonTexture = loader.load('moon.png');
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({ map: moonTexture })
 );
-
 scene.add(moon);
 
 moon.position.z = 30;
 moon.position.setX(-10);
 
-// 🎬 ANIMATION
+// animation
 function animate() {
   requestAnimationFrame(animate);
 
@@ -116,11 +112,10 @@ function animate() {
 
 animate();
 
-// 📱 RESIZE HANDLING
+// resize
 window.addEventListener("resize", () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(window.devicePixelRatio);
 });
