@@ -50,7 +50,7 @@
 
       .box {
         width: min(800px, 100%);
-        margin: 0 auto;
+        margin: 0 auto 40px;
         border: 3px solid white;
         padding: 20px;
         border-radius: 12px;
@@ -66,6 +66,13 @@
         border: 3px solid white;
         border-radius: 12px;
       }
+
+      .project-image {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 30px auto 0;
+      }
     </style>
   </head>
 
@@ -78,29 +85,39 @@
         <p>Welcome to my portfolio site!</p>
         <h2><u>Projects</u></h2>
       </header>
-      <!--Project 1-->
+
+      <!-- Project 1 -->
       <div class="box">
         <section>
           <p><b>Fully Autonomous Kissing Robot</b></p>
-          <p>- Used Python for the kissing app (which I made via VS Code on my laptop)</p>
-          <p>- Then turned it into a Linux executable so it could run on the Raspberry Pi board (the board is attached behind the screen.)</p>
-          <p>- I bought the screen online, and made sure it was compatible w/ my specific Raspberry Pi. The package also came w/ instructions for how to connect it.</p>
-          <p>- Set up a separate Arduino project using an Arduino Uno, a servo motor, a sensor, and a board attached on top of the Arduino (an L293D Drive Module Motor)</p>
-          <p>- Soldered header pins to the L293D to get some wires connected from the sensor and the servo motor</p>
-          <p>- Got some motors and wheels from an Arduino kit I found online, to set up the robot's movement, and attached those wires to the L293D as well</p>
-          <p>- After all was said and code was pushed to the Arduino Uno, I connected the Raspberry Pi on top of the actual moving Arduino robot via hot glue.</p>
-          <p>- I also added some supporting axles at the bottom to make sure the robot could support its own movement</p>
-          <p>- Made it so the sensor moves from left to center to right to sense any objects before backing up out of the objects' way, and slightly turning right</p>
-          <p>- Sound is quiet since I used some quiet headphones, but the Linux executable asks the user for a kiss.</p>
-          <p>- When the user presses the button presented, a “thank you” message appears, and the app says “thank you so much.”</p>
-          <p>- Lastly, I used a power bank to power both devices via their respective power cables</p>
 
-          <p><a href="https://youtu.be/1n_KjpMfVT0?si=KYvkj5bqTcSr3D-r" target="_blank">* Arduino tutorial</a></p>
-          <p><a href="https://youtu.be/gpQDZ5CNY5w?si=bIQDUWydfEzQRCEX" target="_blank">* Python tutorial</a></p>
+          <p>- Developed the interactive application in Python using VS Code.</p>
+          <p>- Converted the Python application into a Linux executable for deployment on the Raspberry Pi.</p>
+          <p>- Integrated a display compatible with the Raspberry Pi.</p>
+          <p>- Built a separate Arduino-based control system using an Arduino Uno, servo motor, sensor, and L293D motor driver module.</p>
+          <p>- Soldered header pins to the L293D to connect the sensor and servo motor.</p>
+          <p>- Integrated motors and wheels with the L293D motor driver to control the robot's movement.</p>
+          <p>- Mounted the Raspberry Pi and display system onto the mobile Arduino robot.</p>
+          <p>- Added supporting axles to improve stability during movement.</p>
+          <p>- Programmed the sensor to scan left, center, and right for obstacles, allowing the robot to back away and change direction when an object is detected.</p>
+          <p>- Developed an interactive interface that asks the user for a kiss and responds with a thank-you message when the on-screen button is pressed.</p>
+          <p>- Powered the Raspberry Pi and Arduino systems using a power bank and their respective power cables.</p>
 
-          <p>* Self-made the Linux executable</p>
-          <p>* Overall time to complete: Around 4 months</p>
-          <p></p> <!--space-->
+          <p>
+            <a href="https://youtu.be/1n_KjpMfVT0?si=KYvkj5bqTcSr3D-r" target="_blank">
+              * Arduino Tutorial
+            </a>
+          </p>
+
+          <p>
+            <a href="https://youtu.be/gpQDZ5CNY5w?si=bIQDUWydfEzQRCEX" target="_blank">
+              * Python Tutorial
+            </a>
+          </p>
+
+          <p>* Linux executable created independently.</p>
+          <p>* Overall time to complete: Approximately 4 months</p>
+
           <video class="my-video" controls playsinline>
             <source src="./mymovie1.mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -108,29 +125,41 @@
         </section>
       </div>
 
-      <!--spacer between projects-->
-      <p></p>
-      <p></p>
-      <p></p>
-      
-      <!--Project 2-->
+      <!-- Project 2 -->
       <div class="box">
         <section>
-          <p><b>Facial Recognition Via Inputting Instagram User</b></p>
-          <p>- Used Python for everything </p>
-          <p>- Had to create the webscraper first, and fix some outdated syntax </p>
-          <p>- created the facial recognition app, then copied and pasted all the code from that py file and put it right below the webscraper</p>
-          <p>- Afterwards, I started changing up the code and adding a directory folder where ALL downloaded files from the webscraper go to, and then the camera compares your face to those</p>
-          <p>- Removed file extensions as well as the numbering system from each filename so that only the "keyword" from each filename appears</p>
-          <p>- Realized that some Insta profiles have multiple people in photos, so I added a function that finds all faces in every single image for each "keyword</p>
-          <p>- Which ever face appears the most on an Insta user's posts, becomes the group of faces that gets associated w/ that Insta user, thus putting a username to a face for the recognition system</p>
-          <p><u><a href="https://github.com/CamyyYYYY/Instagram-webscraper-face-recognition" target="_blank">* Source Code Is Here</a></u></p>
-          
-          <p><a href="https://youtu.be/x_5U_uOxezo?si=1g4Rrdm6GZXEOE0u" target="_blank">* Python webscrape tutorial (had to replace a lot of old code ngl)</a></p>
-          <p><a href="https://youtu.be/dY29JzuMJJU?si=h8MJBVRuVWOWgppo" target="_blank">* RealTime Face-Recognition Python tutorial (also had to change a lot of code for grouping faces)</a></p>
-          
-          <p>* The important or changed functions from the second and first tutorial are self-made, the rest is primarily from the tutorials :))</p>
-          <p>* Overall time to complete: Around 2 months (was relatively easy, required some practice w/ face recognition in general)</p>
+          <p><b>Facial Recognition via Instagram User Input</b></p>
+
+          <p>- Developed the project in Python.</p>
+          <p>- Built and updated a web scraper, replacing outdated syntax and functionality where necessary.</p>
+          <p>- Integrated the web scraper with a facial recognition application.</p>
+          <p>- Created a directory system for downloaded images, which are processed by the facial recognition system for comparison.</p>
+          <p>- Processed filenames to remove file extensions and numbering so that only identifying keywords remain.</p>
+          <p>- Added functionality to detect multiple faces within images associated with each Instagram profile.</p>
+          <p>- Developed logic to determine which face appears most frequently within a user's posts and associate that face with the corresponding username.</p>
+
+          <p>
+            <u>
+              <a href="https://github.com/CamyyYYYY/Instagram-webscraper-face-recognition" target="_blank">
+                * Source Code
+              </a>
+            </u>
+          </p>
+
+          <p>
+            <a href="https://youtu.be/x_5U_uOxezo?si=1g4Rrdm6GZXEOE0u" target="_blank">
+              * Python Web Scraping Tutorial
+            </a>
+          </p>
+
+          <p>
+            <a href="https://youtu.be/dY29JzuMJJU?si=h8MJBVRuVWOWgppo" target="_blank">
+              * Real-Time Facial Recognition Python Tutorial
+            </a>
+          </p>
+
+          <p>* Tutorial code was modified and expanded to support updated web scraping functionality, file processing, and multi-face grouping.</p>
+          <p>* Overall time to complete: Approximately 2 months</p>
 
           <video class="my-video" controls playsinline>
             <source src="./mymovie2.mp4" type="video/mp4" />
@@ -139,57 +168,56 @@
         </section>
       </div>
 
-<!--spacer between projects-->
-      <p></p>
-      <p></p>
-      <p></p>
-      
-      <!--Project 3-->
+      <!-- Project 3 -->
       <div class="box">
         <section>
-          <p><b>Camera that works w/ Voice Recognition</b></p>
-          <p>- Used Python and SSH for everything </p>
-          <p>My Sources: </p>
-          <p></p>
-          <a href="https://makerworld.com/en/models/648246-raspberry-pi-5-mach-1-case#profileId-575928">3D Case I Used</a>
-          <p></p> <!--space-->
-          <a href="https://www.youtube.com/watch?v=9GJ6XeB-vMg">Video I Used</a>
-          <p>* Overall time to complete: Around 4 months</p>
+          <p><b>Voice-Controlled Camera</b></p>
+
+          <p>- Developed using Python and SSH.</p>
+
+          <p><b>Project Resources:</b></p>
+
+          <p>
+            <a href="https://makerworld.com/en/models/648246-raspberry-pi-5-mach-1-case#profileId-575928" target="_blank">
+              * Raspberry Pi 5 Case
+            </a>
+          </p>
+
+          <p>
+            <a href="https://www.youtube.com/watch?v=9GJ6XeB-vMg" target="_blank">
+              * Reference Video
+            </a>
+          </p>
+
+          <p>* Overall time to complete: Approximately 4 months</p>
 
           <video class="my-video" controls playsinline>
             <source src="./mymovie3.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          
-          <p></p> <!--space-->
 
-          <img src="photo.jpeg" alt="Description" style="max-width: 100%; height: auto;">
+          <img
+            class="project-image"
+            src="photo.jpeg"
+            alt="Voice-controlled camera project"
+          />
         </section>
       </div>
 
-<!--spacer between projects-->
-      <p></p>
-      <p></p>
-      <p></p>
-      
-      <!--Project 4-->
+      <!-- Project 4 -->
       <div class="box">
         <section>
-          <p><b>Website for a clients clothing/ marketing brand</b></p>
-          <p>- Used HTML and CSS for everything </p>
-          <p>* Overall time to complete: Around 1 month</p>
+          <p><b>Client Clothing and Marketing Brand Website</b></p>
+
+          <p>- Developed a website for a client's clothing and marketing brand using HTML and CSS.</p>
+          <p>* Overall time to complete: Approximately 1 month</p>
 
           <video class="my-video" controls playsinline>
             <source src="./mymovie4.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          
-          <p></p> <!--space-->
-
         </section>
       </div>
-
-      
     </main>
 
     <script type="module" src="main.js"></script>
